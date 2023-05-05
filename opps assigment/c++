@@ -1,0 +1,907 @@
+MODULE: 3.1 (C++ Basic)
+
+WAP to print “Hello World” using C++ 
+//WAP to print “Hello World” using C++
+#include<iostream>
+using namespace std;
+int main()
+{
+	cout<<"Hello World";
+	return 0;
+}
+OUTPUT:
+Hello World 
+
+   •     
+   
+    What is OOP? List OOP concepts 
+Object-oriented programming is a model that provides different types of concepts, such as inheritance, abstraction, polymorphism, etc. These concepts aim to implement real-world entities in programs, and they create working methods and variables to reuse them without compromising security.
+OOP concepts:
+     Class 
+     Object
+     Inheritance
+     Polymorphism
+     Encapsulation
+     Abstraction
+     Dynamic Binding and Message passing 
+
+
+
+
+
+   •      What is the difference between OOP and POP
+   
+
+   OOP Definition 
+
+
+   Object-Oriented Programming is one of the high-level programming languages in which a program 
+   is divided into objects. Using objects, the programmer can model real-world scenarios.
+    An object is an instance of a class and has state and behavior. The state is the attributes,
+     or data, whereas Behavior is called a method.
+     OOPs connects data and functions operating on it, so that it is inaccessible by any other 
+     part of the code except for that function. 
+
+
+POP Definition
+
+
+Procedural Oriented Programming is one of the programming methods where the main focus is on 
+functions or procedures required for computation, instead of data.
+
+The program is divided into functions, and the task is done sequentially. These functions 
+share the global data or variables, and there is an exchange of data among those functions. 
+It is a step-by-step process that breaks the task through a sequence of instructions. 
+It uses a top-down approach and sees data and procedures as separate structures.
+
+
+
+  
+
+
+
+//WAP to create simple calculator using class
+#include<iostream>
+using namespace std;
+class calculator
+{
+	public:
+    void add(int a,int b)
+	{
+		cout<<"\naddition of "<<a<<" and "<<b<<" is "<<a+b;
+	}
+	void sub(int a,int b)
+	{
+		cout<<"\nsubtraction of "<<a<<" and "<<b<<" is "<<a-b;
+	}
+	void mult(int a,int b)
+	{
+		cout<<"\nmultiplication of "<<a<<" and "<<b<<" is "<<a*b;
+	}
+	void div(int a,int b)
+	{
+		cout<<"\ndivision of "<<a<<" and "<<b<<" is "<<a/b;
+	}
+	void mod(int a,int b)
+	{
+		cout<<"\nmod of "<<a<<" and "<<b<<" is "<<a%b;
+	}
+};
+int main()
+{
+	int a,b;
+	calculator obj;
+	cout<<"enter first number:";
+	cin>>a;
+	cout<<"enter second number:";
+	cin>>b;
+	obj.add(a,b);
+	obj.sub(a,b);
+	obj.mult(a,b);
+	obj.div(a,b);
+	obj.mod(a,b);
+	return 0;
+}
+
+
+
+ Write a program to concatenate the two strings using Operator Overloading.
+
+
+#include<iostream>
+using namespace std;
+class a
+{
+	public:
+		string str1,str2;
+		a(string a1,string b1)
+		{
+			str1=a1;
+			str2=b1;
+		}
+		string operator+()
+		{
+			return str1+str2;
+		}
+};
+int main()
+{
+	string a1,b1,output;
+	cout<<"enter first string:";
+	getline(cin,a1);
+	cout<<"enter second string:";
+	getline(cin,b1);
+	a obj(a1,b1);
+	output=obj.operator+();
+	cout<<"string concatenation:"<<output;
+	return 0;
+}
+
+
+
+ Write a program to calculate the area of circle, rectangle and triangle using
+Function Overloading
+ Rectangle: Area * breadth
+ Triangle: ½ *Area* breadth
+ Circle: Pi * Area *Area.
+
+
+#include<iostream>
+using namespace std;
+int area(int length,int width)
+{
+	return length*width;
+}
+float area(float height,float base)
+{
+	return 0.5*height*base;
+}
+float area(int radius)
+{
+	return 3.14*radius*radius;
+}
+int main()
+{
+	int length,width,radius;
+	float height,base;
+	cout<<"-----area of rectangle-----\n";
+	cout<<"enter length of rectangle:";
+	cin>>length;
+	cout<<"enter width of rectangle:";
+	cin>>width;
+	cout<<"the area of rectangle is:"<<area(length,width);
+	cout<<"\n-----area of triangle-----\n";
+	cout<<"enter height of triangle:";
+	cin>>height;
+	cout<<"enter base of triangle:";
+	cin>>base;
+	cout<<"the area of triangle is:"<<area(height,base);
+	cout<<"\n-----area of circle-----\n";
+	cout<<"enter radius of circle:";
+	cin>>radius;
+	cout<<"the area of circle is:"<<area(radius);
+	return 0;
+	
+}
+
+
+//Write a program to swap the two numbers using friend function without using third variable
+#include<iostream>
+using namespace std;
+class b;
+class a
+{
+	
+		int num1;
+		public:
+		void getdata()
+		{
+			cout<<"enter number1:";
+			cin>>num1;
+		}
+		friend void swap(a,b);
+};
+class b
+{
+		int num2;
+		public:
+		void getdata()
+		{
+			cout<<"enter number2:";
+			cin>>num2;
+		}
+		friend void swap(a,b);
+};
+void swap(a obj1,b obj2)
+{
+	cout<<" before swapping the two variable value is "<<obj1.num1<<" and "<<obj2.num2<<endl;
+	obj1.num1=obj1.num1+obj2.num2;
+	obj2.num2=obj1.num1-obj2.num2;
+	obj1.num1=obj1.num1-obj2.num2;
+	cout<<"\n after swapping the two variable value is "<<obj1.num1<<" and "<<obj2.num2<<endl;
+}
+int main()
+{
+	a obj1;
+	b obj2;
+	obj1.getdata();
+	obj2.getdata();
+
+	swap(obj1,obj2);
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+//Write a program to find the max number from given two numbers using friend function
+#include<iostream>
+using namespace std;
+class b;
+class a
+{
+	
+		int num1;
+		public:
+		void getdata()
+		{
+			cout<<"enter number1:";
+			cin>>num1;
+		}
+		friend void max(a,b);
+};
+class b
+{
+		int num2;
+		public:
+		void getdata()
+		{
+			cout<<"enter number2:";
+			cin>>num2;
+		}
+		friend void max(a,b);
+};
+void max(a obj1,b obj2)
+{
+	(obj1.num1>obj2.num2)?cout<<obj1.num1<<" is max":cout<<obj2.num2<<" is max";
+}
+int main()
+{
+	a obj1;
+	b obj2;
+	obj1.getdata();
+	obj2.getdata();
+
+	max(obj1,obj2);
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Define a class to represent a bank account. Include the following members:
+//1. Data Member:
+//-Name of the depositor
+//-Account Number
+//-Type of Account
+//-Balance amount in the account
+//2. Member Functions
+//-To assign values
+//-To deposited an amount
+//-To withdraw an amount after checking balance
+//-To display name and balance
+#include<iostream>
+#include<cstring>
+using namespace std;
+class account
+{
+	public:
+		string depositor;
+		int account_no;
+		int balance;
+		int deposite_amount,withdrawl_amount;
+		void getdata()
+		{
+			cout<<"please enter your name:";
+			getline(cin,depositor); //for getting string with space using getline method.
+			cout<<"please enter account number:";
+			cin>>account_no;
+			cout<<"please enter balance:";
+			cin>>balance;
+		}
+		void deposite()
+		{
+			cout<<"\nplease enter the amount you want to deposite:";
+			cin>>deposite_amount;
+			balance=balance+deposite_amount;
+			cout<<"\nnow the total balance is:"<<balance;
+			
+		}
+		void withdraw()
+		{
+			if(balance>1500)
+			{
+				cout<<"\nplease enter amount which you want to withdraw:";
+				cin>>withdrawl_amount;
+				if((balance-withdrawl_amount)>1500)
+				{
+					balance=balance-withdrawl_amount;
+					cout<<"\nnow the total balance is:"<<balance;
+				}
+				else
+				{
+					cout<<"\nplease enter less than the given withdrawl amount:";
+					cin>>withdrawl_amount;
+					if((balance-withdrawl_amount)>1500)
+					{
+						balance=balance-withdrawl_amount;
+						cout<<"\nnow the total balance is:"<<balance;
+					}
+				}
+			}
+			else
+			{
+				cout<<"\ninsufficient balance";
+			}
+			
+		}
+		void display()
+		{
+			cout<<"\ndepositor_name:"<<depositor;
+			cout<<"\naccount no is:"<<account_no;
+			cout<<"\nbalance is:"<<balance;
+		}
+		
+};
+int main()
+{
+	int choice;
+	account obj;
+	obj.getdata();
+	while(true)
+	{
+		cout<<"\n-----MENU-----";
+		cout<<"\n1.deposite";
+		cout<<"\n2.withdraw";
+		cout<<"\n3.display";
+		cout<<"\n please enter your choice:";
+		cin>>choice;
+		if (choice==1)
+		{
+			obj.deposite();
+		}
+		else if(choice==2)
+		{
+			obj.withdraw();
+		}
+		else if(choice==3)
+		{
+			obj.display();
+		}	
+		else
+		{
+			break;	
+		}	
+	}
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+//Write a program to find the multiplication values and the cubic values using inline function
+#include<iostream>
+using namespace std;
+inline void multi_cubic(int n1,int n2)
+{
+	cout<<"multiplication values:"<<n1*n2;
+	cout<<"\ncubic value of "<<n1<<" is :"<<n1*n1*n1;
+	cout<<"\ncubic value of "<<n2<<" is :"<<n2*n2*n2;
+}
+int main()
+{
+	int n1,n2;
+	cout<<"enter first number:";
+	cin>>n1;
+	cout<<"enter second number:";
+	cin>>n2;
+	multi_cubic(n1,n2);
+	return 0;
+}
+
+
+
+
+
+
+
+
+//Write a program of Addition, Subtraction, Division, Multiplication using constructor.
+#include<iostream>
+using namespace std;
+class calculator
+{
+	public:
+	calculator(int a,int b)
+	{
+		cout<<"addition of "<<a<<" and "<<b<<" is:"<<a+b;
+		cout<<"\nsubtraction of "<<a<<" and "<<b<<" is:"<<a-b;
+		cout<<"\nmultiplication of "<<a<<" and "<<b<<" is:"<<a*b;
+		cout<<"\ndivision of "<<a<<" and "<<b<<" is:"<<a/b;
+	}
+};
+int main()
+{
+	int n1,n2;
+	cout<<"enter first number:";
+	cin>>n1;
+	cout<<"enter second number:";
+	cin>>n2;
+	calculator obj(n1,n2);
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+/*Assume a class cricketer is declared. Declare a derived class batsman from
+cricketer. Data member of batsman. Total runs, Average runs and best
+performance. Member functions input data, calculate average runs, Display
+data. (Single Inheritance)*/
+#include<iostream>
+using namespace std;
+class cricketer
+{
+	public:
+		int total_run,average_run,best_performance,out;
+		void input_data(){}
+		void average_runs(){}
+		void display(){}
+};
+class batsman:public cricketer
+{
+	public:
+		void input_data()
+		{
+			cout<<"enter total run:";
+			cin>>total_run;
+			cout<<"enter best performance:";
+			cin>>best_performance;
+		}
+		void average_runs()
+		{
+			cout<<"enter the number of times out:";
+			cin>>out;
+			average_run=total_run/out;
+			cout<<"now the average runs are:"<<average_run;
+		}
+		void display()
+		{
+			cout<<"\nbatsman is having total run:"<<total_run;
+			cout<<"\nbatsman is having average run:"<<average_run;
+			cout<<"\nbatsman is having best performnace:"<<best_performance;
+		}
+};
+int main()
+{
+	batsman obj;
+	obj.input_data();
+	obj.average_runs();
+	obj.display();
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+/*Create a class person having members name and age. Derive a class student
+having member percentage. Derive another class teacher having member
+salary. Write necessary member function to initialize, read and write data.
+Write also Main function (Hierarchical Inheritance)*/
+#include<iostream>
+using namespace std;
+class person
+{
+	public:
+		string name;
+		int age;
+		
+};
+class student:public person
+{
+	public:
+		int percentage;
+		student()
+		{
+			name="abc";
+			age=18;
+		}
+		void getdata()
+		{
+			cout<<"----student----\n";
+			cout<<"enter the name of the student:";
+			cin>>name;
+			cout<<"enter the age of the student:";
+			cin>>age;
+			cout<<"enter the percentage of the student:";
+			cin>>percentage;
+		}
+		void displaydata()
+		{
+			cout<<"-----student details-----";
+			cout<<"\nstudent name:"<<name;
+			cout<<"\nage of the student:"<<age;
+			cout<<"\npercentage of the student:"<<percentage;
+		}
+};
+class teacher:public person
+{
+	public:
+		int salary;
+		teacher()
+		{
+			name="abc";
+			age=18;
+		}
+		void getdata()
+		{
+			cout<<"\n\n----teacher----\n";
+			cout<<"enter the name of the teacher:";
+			cin>>name;
+			cout<<"enter the age of the teacher:";
+			cin>>age;
+			cout<<"enter the salary of the teacher:";
+			cin>>salary;
+		}
+		void displaydata()
+		{
+			cout<<"-----teacher details-----";
+			cout<<"\nteacher name:"<<name;
+			cout<<"\nage of the teacher:"<<age;
+			cout<<"\nsalary of the teacher:"<<salary;
+		}
+};
+int main()
+{
+	student obj1;
+	teacher obj2;
+	obj1.getdata();
+	obj1.displaydata();
+	obj2.getdata();
+	obj2.displaydata();
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*Assume that the test results of a batch of students are stored in three different
+classes. Class Students are storing the roll number. Class Test stores the marks
+obtained in two subjects and class result contains the total marks obtained in
+the test. The class result can inherit the details of the marks obtained in the
+test and roll number of students. (Multiple Inheritance)*/
+#include<iostream>
+using namespace std;
+class Students
+{
+	public:
+		int roll_no;
+		void input_rollno()
+		{
+			cout<<"enter your roll no:";
+			cin>>roll_no;
+		}
+		
+};
+class Test
+{
+	public:
+		int mark1,mark2;
+		void input_marks()
+		{
+			cout<<"enter your marks in maths:";
+			cin>>mark1;
+			cout<<"enter your marks in science:";
+			cin>>mark2;
+		}
+};
+class Result:public Test,public Students
+{
+	public:
+		int total_marks;
+		void total_mark()
+		{
+			total_marks=mark1+mark2;
+			cout<<"your total mark is:"<<total_marks;
+		}
+};
+int main()
+{
+	Result obj;
+	obj.input_rollno();
+	obj.input_marks();
+	obj.total_mark();
+	return 0;
+}
+
+
+
+
+
+
+
+/*Write a program to Mathematic operation like Addition, Subtraction,
+Multiplication, Division Of two number using different parameters and
+Function Overloading*/
+#include<iostream>
+using namespace std;
+int add(int a,int b)
+{
+	return a+b;
+}
+float add(float a,float b)
+{
+	return a+b;
+}
+int sub(int a,int b)
+{
+	return a-b;
+}
+float sub(float a,float b)
+{
+	return a-b;
+}
+int mult(int a,int b)
+{
+	return a*b;
+}
+float mult(float a,float b)
+{
+	return a*b;
+}
+int div(int a,int b)
+{
+	return a/b;
+}
+float div(float a,float b)
+{
+	return a/b;	
+}
+int main()
+{
+	int a,b;
+	cout<<"enter first number:";
+	cin>>a;
+	cout<<"enter second number:";
+	cin>>b;
+	cout<<"addition="<<add(a,b);
+	cout<<"\nsubtraction="<<sub(a,b);
+	cout<<"\nmultiplication="<<mult(a,b);
+	cout<<"\ndivision="<<div(a,b);
+	cout<<"\n------------------------";
+	float a1,b1;
+	cout<<"\nenter first number:";
+	cin>>a1;
+	cout<<"enter second number:";
+	cin>>b1;
+	cout<<"addition="<<add(a1,b1);
+	cout<<"\nsubtraction="<<sub(a1,b1);
+	cout<<"\nmultiplication="<<mult(a1,b1);
+	cout<<"\ndivision="<<div(a1,b1);
+}
+
+
+
+
+
+
+
+//Write a Program of Two 1D Matrix Addition using Operator Overloading
+#include<iostream>
+using namespace std;
+class b
+{
+	public:
+		int b[3][3];
+		void getB()
+		{
+			int i,j;
+			cout<<"matrix b:\n";
+			for(i=0;i<=2;i++)
+			{
+				for(j=0;j<=2;j++)
+				{
+					cout<<"b["<<i<<"]["<<j<<"]=";
+					cin>>b[i][j];
+				}
+			}
+		}
+};
+class a
+{
+	public:
+		int a[3][3];
+		void getA()
+		{
+			int i,j;
+			cout<<"matrix a:\n";
+			for(i=0;i<=2;i++)
+			{
+				for(j=0;j<=2;j++)
+				{
+					cout<<"a["<<i<<"]["<<j<<"]=";
+					cin>>a[i][j];
+				}
+			}
+		}
+		void operator+(b obj)
+		{
+			int i,j,c[3][3];
+			cout<<"\naddition of two matrix:\n";
+			for(i=0;i<=2;i++)
+			{
+				for(j=0;j<=2;j++)
+				{
+					c[i][j]=a[i][j]+obj.b[i][j];
+					cout<<c[i][j]<<"\t";
+				}
+				cout<<"\n";
+			}
+		}	
+};
+int main()
+{
+	a obj;
+	b obj1;
+	obj.getA();
+	obj1.getB();
+	obj+obj1;
+	return 0;	
+}
+
+
+
+
+
+
+
+
+
+
+
+//Write a program of to swap the two values using templates
+#include<iostream>
+using namespace std;
+template <typename t>
+class a
+{
+	public:
+		t a,b,temp;
+		void getdata()
+		{
+			cout<<"enter num1:";
+			cin>>a;
+			cout<<"enter num2:";
+			cin>>b;
+		}
+		void swap()
+		{
+			cout<<"before swap "<<a<<" and "<<b;
+			temp=a;
+			a=b;
+			b=temp;
+			cout<<"\nafter swap "<<a<<" and "<<b;
+		}
+};
+int main()
+{
+	a <float>obj;
+	obj.getdata();
+	obj.swap();
+	return 0;
+}
+
+
+
+
+
+
+
+//Write a program of to sort the array using templates.
+#include<iostream>
+using namespace std;
+template <typename t>
+class a
+{
+	public:
+		t a[10];
+		void getdata()
+		{
+			int i;
+			cout<<"-----Array a:-----\n";
+			for(i=0;i<=9;i++)
+			{
+				cout<<"a["<<i<<"]=";
+				cin>>a[i];
+			}
+		}
+		void sort()
+		{
+			t temp;
+			int i,j,min;
+			cout<<"\n-----sorting-----\n";
+			for(i=0;i<=8;i++)
+			{
+				min=i;
+				for(j=i+1;j<=9;j++)
+				{
+					if(a[j]<a[min])
+					{
+						min=j;
+					}
+				}
+				temp=a[min];
+				a[min]=a[i];
+				a[i]=temp;
+			}
+		}
+		void display()
+		{
+			int i;
+			cout<<"-----Array a:-----\n";
+			for(i=0;i<=9;i++)
+			{
+				cout<<"\na["<<i<<"]="<<a[i];
+			}
+		}
+};
+int main()
+{
+	a <float>obj;
+	obj.getdata();
+	obj.sort();
+	obj.display();
+	return 0;
+}
